@@ -12,6 +12,7 @@ public class AlunoService {
     public AlunoService(AlunoRepository repository) {
         this.repository = repository;
     }
+
     public void salvarAluno(Aluno aluno){
         repository.saveAndFlush(aluno);
     }
@@ -22,6 +23,22 @@ public class AlunoService {
         );
   }
 
-  public void
+  public void deletarAlunoPorEmail(String email){
+        repository.deleteByEmail(email);
+  }
+  public void atualizarAlunoPorEmail(String email,Aluno aluno){
+        Aluno alunoEntity = repository.findByEmail(email).orElseThrow(() ->
+                new RuntimeException("Aluno não encontrado"));
+        Aluno alunoAtualizado = Aluno.builder()
+                .nome(aluno.getNome() != null ? aluno.getNome(): alunoEntity.getNome())
+                .email(aluno.getEmail() != null ? aluno.getEmail(): alunoEntity.getEmail())
+                .id(alunoEntity.getId())
+                .build();
+
+        repository.saveAndFlush(alunoAtualizado);
+  }
+
+
+
 }
 

@@ -21,4 +21,6 @@ public class Aluno {
 
     @Column(name = "nome")
     private String nome;
+
+
 }
