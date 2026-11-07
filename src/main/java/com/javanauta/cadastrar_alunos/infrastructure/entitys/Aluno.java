@@ -1,7 +1,14 @@
+
 package com.javanauta.cadastrar_alunos.infrastructure.entitys;
+
 import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.boot.context.properties.bind.Name;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -22,5 +29,6 @@ public class Aluno {
     @Column(name = "nome")
     private String nome;
 
-
+    @Column(name = "nota", precision = 4, scale = 2)
+    private BigDecimal nota;
 }

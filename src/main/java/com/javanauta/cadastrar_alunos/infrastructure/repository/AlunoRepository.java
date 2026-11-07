@@ -1,15 +1,16 @@
+
 package com.javanauta.cadastrar_alunos.infrastructure.repository;
 
 import com.javanauta.cadastrar_alunos.infrastructure.entitys.Aluno;
-import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-public interface AlunoRepository extends JpaRepository<Aluno, Integer>
-{
-     Optional<Aluno> findByEmail(String email);
+public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
 
- @Transactional
-     void deleteByEmail(String email);
+    Optional<Aluno> findByEmail(String email);
+
+    @Transactional
+    void deleteByEmail(String email);
 }
